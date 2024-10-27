@@ -1,1 +1,1 @@
-web: python deep_questions_bot.py
+worker: python deep_questions_bot.py
