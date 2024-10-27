@@ -112,7 +112,7 @@ async def deep_question(ctx, *, category=None):
 
     try:
         await bot.wait_for('reaction_add', timeout=60.0, check=check)
-        await question(ctx, category=category)
+        await deep_question(ctx, category=category)
     except asyncio.TimeoutError:
         await ctx.send('Час очікування вичерпано.')
 
@@ -127,7 +127,7 @@ async def helpbot(ctx):
 **Привіт! Я філософський бот. Ось як мене використовувати:**
 
 - `/deep_question` — отримати випадкове питання.
-- `/question [категорія]` — отримати питання з певної категорії.
+- `/deep_question [категорія]` — отримати питання з певної категорії.
 - `/deep_categories` — переглянути список доступних категорій.
 - `/helpbot` — показати цю підказку.
 """
@@ -139,8 +139,6 @@ async def deep_suggest(ctx, *, suggestion):
     admin_user = await bot.fetch_user(admin_id)
     await admin_user.send(f'Нова пропозиція від {ctx.author}: {suggestion}')
     await ctx.send("Дякуємо за вашу пропозицію! Ми розглянемо її найближчим часом.")
-
-
 
 # Запуск бота
 bot.run(os.getenv('DISCORD_BOT_TOKEN'))
